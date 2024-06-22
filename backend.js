@@ -1,6 +1,6 @@
 import express from 'express'
 const app = express()
-const hostname = '0.0.0.0'
+const hostname = 'localhost'
 const port = 8080
 import data from './mock_data.json' assert { type: 'json' }
 import bodyParser from 'body-parser'
