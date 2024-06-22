@@ -30,15 +30,17 @@ jobs:
 
       - name: Start Express.js Server
         run: node backend.js &
+      - name: Test with CURL
+        run: curl http://localhost:8080/persons
 
-  test-with-curl:
-    runs-on: ubuntu-latest
-    needs: run-server # Ensure run-server job completes first
+  # test-with-curl:
+  #   runs-on: ubuntu-latest
+  #   needs: run-server # Ensure run-server job completes first
 
-    steps:
-      - name: Wait for Server to Start
-        run: sleep 10s # Adjust if your server takes longer to start
+  #   steps:
+  #     - name: Wait for Server to Start
+  #       run: sleep 10s # Adjust if your server takes longer to start
 
-      - name: Test with curl
-        run: |
-          curl -i http://localhost:8080/persons
+  #     - name: Test with curl
+  #       run: |
+  #         curl http://localhost:8080/persons
