@@ -28,10 +28,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Start Express.js Server
+      - name: Start Server
         run: node backend.js &
       - name: Test with CURL
         run: curl http://localhost:8080/persons
+      - name: VueJS Unit Testing
+        run: npm run test:unit
+      - name: Stop server
+        run: pkill -f "node backend.js"
+        if: always()
 
   # test-with-curl:
   #   runs-on: ubuntu-latest
