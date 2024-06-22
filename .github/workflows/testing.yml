@@ -7,7 +7,7 @@ on:
     branches: ['main']
 
 jobs:
-  build:
+  run-server:
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,3 +24,14 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: node backend.js
+
+  test-with-curl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for Server to Start
+        run: sleep 10s # Adjust if your server takes longer to start
+
+      - name: Test with curl
+        run: |
+          curl -i http://localhost:8080/persons
